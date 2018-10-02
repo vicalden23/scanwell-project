@@ -1,0 +1,13 @@
+.container {
+	margin: auto;
+	margin-top: 2rem;
+}
+
+.search-input {
+
+}
+
+.submit-button {
+	border-radius: 10px;
+	background: #FA8072
+}
