@@ -17,15 +17,15 @@ router.listen(2023, () => {
   console.log('LISTENING PORT NUMBER 2023');
 });
 
-
-// GET: /api/movies/search
-// query themoviedb API
-router.get('/api/movies/search/:title', (req, res, next) => {
-	axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${config.movies.api_key}&query=${req.params.title}`)
-		.then((response) => {
-			res.status(200).json(response.data.results)
-		})
-		.catch((err) => res.send(err))
+// GET: /api/movies/seen
+// fetches all seen movies
+router.get('/api/movies/seen', (req, res, next) => {
+	Movie.find({ seen: true }, (err, movies) => {
+		if (err) {
+			res.send('could not fetch movies');
+		}
+		res.status(200).json(movies);
+	})
 })
 
 // GET: /api/movies/watchlist
@@ -39,22 +39,31 @@ router.get('/api/movies/watchlist', (req, res, next) => {
 	})
 })
 
-// GET: /api/movies/seen
-// fetches all seen movies
-router.get('/api/movies/seen', (req, res, next) => {
-	Movie.find({ seen: true }, (err, movies) => {
-		if (err) {
-			res.send('could not fetch movies');
-		}
-		res.status(200).json(movies);
-	})
+// GET: /api/movies/search/:title
+// query themoviedb API to search for movies by title
+router.get('/api/movies/search/:title', (req, res, next) => {
+	axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${config.movies.api_key}&query=${req.params.title}`)
+		.then((response) => {
+			res.status(200).json(response.data.results)
+		})
+		.catch((err) => res.send(err))
+})
+
+//GET: /api/movies/:id
+// query the moviedb API for movie details
+router.get('/api/movies/:id', (req, res, next) => {
+	axios.get(`https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${config.movies.api_key}`)
+		.then((response) => {
+			res.status(200).send(response.data)
+		})
+		.catch((err) => res.send(err))
 })
 
 // POST: /api/movies/seen
 router.post('/api/movies/seen', (req, res, next) => {
 	Movie.create({
 		title: req.body.title,
-		movie_id: req.body.id,
+		movie_id: req.body.movie_id,
 		seen: true,
 		watchlist: false
 	}, (err, movie) => {
@@ -70,7 +79,7 @@ router.post('/api/movies/seen', (req, res, next) => {
 router.post('/api/movies/watchlist', (req, res, next) => {
 	Movie.create({
 		title: req.body.title,
-		movie_id: req.body.id,
+		movie_id: req.body.movie_id,
 		seen: false,
 		watchlist: true
 	}, (err, movie) => {
