@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { getWatchlistMovies } from '../redux/actions/watchlistActions';
 
@@ -13,19 +14,24 @@ class WatchList extends Component {
   	const { watchlist } = this.props.watchlist
   	console.log(watchlist)
     return (
-      <div>
-      	{
-      		watchlist.length ? watchlist.map((movie) => {
-      			return (
-      				<div key={movie._id}>
-		      			<p>
-		      				{movie.title}
-		      			</p>
-		      		</div>
-      			)
-      		})
-      		: ''
-      	}
+    	<div>
+	    	<h4 className='title'>
+	    		My Watchlist
+	    	</h4>
+	      <div className='movie-container'>
+	      	{
+	      		watchlist.length ? watchlist.map((movie) => {
+	      			return (
+	      				<div key={movie._id}>
+			      			<Link to={`/movies/${movie.movie_id}`}>
+                    {movie.title}
+                  </Link>
+			      		</div>
+	      			)
+	      		})
+	      		: ''
+	      	}
+	      </div>
       </div>
     )
   }

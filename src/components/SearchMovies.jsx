@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { 
   Button,
   FormGroup,
@@ -90,10 +92,13 @@ class SearchMovies extends Component {
               search.length ? search.map((movie) => {
                 return (
                   <div
+                    className='movie-searches-container'
                     key={movie.id}
                   >
                     <h4>
-                      {movie.original_title}, {movie.release_date.substr(0, 4)}
+                      <Link to={`/movies/${movie.id}`}>
+                        {movie.original_title}, {movie.release_date.substr(0, 4)}
+                      </Link>
                     </h4>
                     <p>
                       {movie.overview}
@@ -102,12 +107,12 @@ class SearchMovies extends Component {
                       className='watchlist-button'
                       data-movie-id={movie.id}
                       onClick={this.addToWatchlist.bind(this, movie.id, movie.original_title)}> 
-                      Watchlist
+                      Add To Watchlist
                     </Button>
                     <Button
                       className='seen-button'
                       onClick={this.addToSeen.bind(this, movie.id, movie.original_title)}> 
-                      Seen It!
+                      I've Seen It!
                     </Button>
                   </div>
                 )
