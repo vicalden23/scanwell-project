@@ -17,7 +17,6 @@ export const getWatchlistMovies = () => (dispatch) => {
 }
 
 export const addToWatchlist = (data) => (dispatch) => {
-	console.log(data)
 	axios.post('http://localhost:2023/api/movies/watchlist', data)
 		.then(response => dispatch({
 			type: ADD_TO_WATCHLIST,
