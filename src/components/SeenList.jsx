@@ -24,7 +24,7 @@ class SeenList extends Component {
         		seen.length ? seen.map((movie) => {
         			return (
   	      			<div key={movie._id}>
-                  <Link to={`/movies/${movie.movie_id}`}>
+                  <Link to={`/movies/${movie.movie_id}`} className='links'>
                     {movie.title}
                   </Link>
                 </div>

@@ -96,7 +96,7 @@ class SearchMovies extends Component {
                     key={movie.id}
                   >
                     <h4>
-                      <Link to={`/movies/${movie.id}`}>
+                      <Link to={`/movies/${movie.id}`} className='links'>
                         {movie.original_title}, {movie.release_date.substr(0, 4)}
                       </Link>
                     </h4>
