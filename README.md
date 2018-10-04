@@ -1,4 +1,4 @@
-# Rivet Movies
+# Scanwell Movies
 
 ## Getting started
 To get started with development, clone the repo
