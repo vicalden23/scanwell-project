@@ -23,26 +23,39 @@ class MovieDetails extends Component {
     details.genres ? details.genres.forEach((genre) => {
       genres.push(genre.name)
     }) : ''
+    let formatMoney = (num) => {
+      return (num).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+
+    }
     console.log(details)
     return (
       <div className='movie-details-container'>
         <Grid>
           <Row>
-            <Col xs={6} md={4}>
+            <Col md={6} mdPush={6}>
               <img src={`https://image.tmdb.org/t/p/w342/${details.poster_path}`} />
               <p className='tagline'>
                 "{details.tagline}"
               </p>
             </Col>
-            <Col xs={12} md={8} className='movie-overview'>
-              <h4>
+            <Col md={6} mdPull={6}>
+              <h4 className='movie-details-right-section'>
                 {details.original_title}, {details.release_date}
               </h4>
               <p>
                 {details.overview}
               </p>
+              <h5 className='rate-count'>
+                {details.vote_average}/10 ({details.vote_count} votes)
+              </h5>
               <p>
                 Genres: {genres.join(', ')}
+              </p>
+              <p>
+                Budget: { details.budget ? `$${formatMoney(details.budget)}` : ''}
+              </p>
+              <p>
+                Revenue: { details.revenue ? `$${formatMoney(details.revenue)}` : ''}
               </p>
             </Col>
           </Row>
