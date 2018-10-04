@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {
   Grid,
   Row,
-  Col
+  Col,
 } from 'react-bootstrap';
 
 import SearchMovies from '../components/SearchMovies';
@@ -26,7 +26,7 @@ class Movies extends Component {
         </Grid>
         <SearchMovies />
       </div>
-    )
+    );
   }
 }
 

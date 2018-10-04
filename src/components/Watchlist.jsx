@@ -5,35 +5,32 @@ import { Link } from 'react-router-dom';
 import { getWatchlistMovies } from '../redux/actions/watchlistActions';
 
 class WatchList extends Component {
-
-	componentDidMount() {
-		this.props.getWatchlistMovies()
-	}
+  componentDidMount() {
+    this.props.getWatchlistMovies();
+  }
 
   render() {
-  	const { watchlist } = this.props.watchlist
-  	console.log(watchlist)
+  	const { watchlist } = this.props.watchlist;
     return (
-    	<div>
-	    	<h4 className='title'>
+      <div>
+        <h4 className="title">
 	    		My Watchlist
-	    	</h4>
-	      <div className='movie-container'>
-	      	{
-	      		watchlist.length ? watchlist.map((movie) => {
-	      			return (
-	      				<div key={movie._id}>
-			      			<Link to={`/movies/${movie.movie_id}`} className='links'>
-                    {movie.title}
-                  </Link>
-			      		</div>
-	      			)
-	      		})
+
+        </h4>
+        <div className="movie-container">
+          {
+	      		watchlist.length ? watchlist.map(movie => (
+				  <div key={movie._id}>
+				    <Link to={`/movies/${movie.movie_id}`} className="links">
+				      {movie.title}
+				    </Link>
+				  </div>
+	      			))
 	      		: ''
 	      	}
-	      </div>
+        </div>
       </div>
-    )
+    );
   }
 }
 

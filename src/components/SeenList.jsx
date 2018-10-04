@@ -6,35 +6,31 @@ import { getSeenMovies } from '../redux/actions/seenActions';
 import '../containers/App.css';
 
 class SeenList extends Component {
-
-	componentDidMount() {
-		this.props.getSeenMovies()
-	}
+  componentDidMount() {
+    this.props.getSeenMovies();
+  }
 
   render() {
-  	const { seen } = this.props.seen
-    console.log(seen)
+  	const { seen } = this.props.seen;
     return (
       <div>
-        <h4 className='title'>
+        <h4 className="title">
           Seen it!
         </h4>
-        <div className='movie-container'>
-        	{
-        		seen.length ? seen.map((movie) => {
-        			return (
-  	      			<div key={movie._id}>
-                  <Link to={`/movies/${movie.movie_id}`} className='links'>
-                    {movie.title}
-                  </Link>
-                </div>
-        			)
-        		})
+        <div className="movie-container">
+          {
+        		seen.length ? seen.map(movie => (
+          <div key={movie._id}>
+            <Link to={`/movies/${movie.movie_id}`} className="links">
+              {movie.title}
+            </Link>
+          </div>
+        			))
         		: ''
         	}
         </div>
       </div>
-    )
+    );
   }
 }
 

@@ -13,12 +13,12 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' component={Movies} />
-            <Route exact path='/movies/:id' component={MovieDetails} />
+            <Route exact path="/" component={Movies} />
+            <Route exact path="/movies/:id" component={MovieDetails} />
           </Switch>
         </BrowserRouter>
       </Provider>
-    )
+    );
   }
 }
 

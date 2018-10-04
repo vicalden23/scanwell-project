@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const config = require('../config')
+const config = require('../config');
 
 // connect to db
 mongoose.connect(config.db.url, { useNewUrlParser: true });
@@ -13,7 +13,7 @@ const movieSchema = new mongoose.Schema({
   title: { type: String },
   movie_id: { type: Number },
   seen: { type: Boolean },
-  watchlist: { type: Boolean }
+  watchlist: { type: Boolean },
 });
 
 const Movie = mongoose.model('Movie', movieSchema);
