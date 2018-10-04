@@ -9,6 +9,10 @@ use:
 OR
 `npm install`
 
+### Config File
+Create a file named `config.js` in scanwell-movies/server-src directory.
+Copy the contents in `example-config.js` into `config.js` and fill in proper API keys, and mongolabs URL
+
 ### Start Servers
 In the root directory use:
 
@@ -22,7 +26,3 @@ To start application server:
 `yarn start`
 OR
 `npm start`
-
-### Config File
-Create a file named `config.js` in scanwell-movies/server-src directory.
-Copy the contents in `example-config.js` into `config.js` and fill in proper API keys, and mongolabs URL
