@@ -9,7 +9,7 @@
 }
 
 .movie-container {
-	border: 1px solid #b0b4b9;
+	border: 2px solid #b0b4b9;
 	border-radius: 4px;
 	height: 15rem;
 	overflow-y: scroll;
@@ -34,11 +34,29 @@
 }
 
 .movie-details-container {
-	width: 85%;
+	width: 75%;
 	margin: auto;
+}
+
+.movie-details-right-section {
+	margin-top: 1.5 !important;
 }
 
 .tagline {
 	margin-top: 1rem;
 	font-size: 20px;
 }
+
+.links {
+	color: black;
+}
+
+.links:hover {
+	text-decoration: underline !important;
+	color: grey;
+}
+
+.rate-count {
+	color: red;
+}
+
